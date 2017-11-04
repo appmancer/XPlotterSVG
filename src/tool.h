@@ -23,6 +23,7 @@ class Tool
         protected:
         static int sTool;
         static int sPower;
+        static int sFeed;
 
     public:
         static const int TOOL_PEN     = 1;
@@ -32,6 +33,8 @@ class Tool
         static void setTool(int tool);
         static int getPower();
         static void setPower(int power);
+        static int getFeedrate();
+        static void setFeedrate(int feed);
 };
 
 #endif // TOOL_H

@@ -28,5 +28,5 @@ QString GCodeLaserOn::toString()
     //Update the logical position of the plotter head
     PlotterState::setHeadDown();
 
-    return QString::asprintf("M4S%d", Tool::getPower());
+    return QString::asprintf("M3 S%d", Tool::getPower());
 }

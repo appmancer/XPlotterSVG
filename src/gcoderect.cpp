@@ -35,14 +35,14 @@ QString GCodeRect::toString()
     QString gcode = "";
 
     QTextStream stream(&gcode);
-    stream << toolUp() << endl;
-    stream << move(startX, startY) << endl;
-    stream << toolDown() << endl;
-    stream << line(startX + rectWidth, startY) << endl;
-    stream << line(startX + rectWidth, startY + rectHeight) << endl;
-    stream << line(startX, startY + rectHeight) << endl;
-    stream << line(startX, startY) << endl;
-    stream << toolUp() << endl;
+    stream << toolUp();
+    stream << move(startX, startY);
+    stream << toolDown();
+    stream << line(startX + rectWidth, startY);
+    stream << line(startX + rectWidth, startY + rectHeight);
+    stream << line(startX, startY + rectHeight);
+    stream << line(startX, startY);
+    stream << toolUp();
     return gcode;
 
 }

@@ -57,6 +57,7 @@ QString GCodeMove::toString()
     stream << QString::number(viewY - translatedPoint.y, 'f', 8);
     //For Candle to show the rendering, we need to add a Z axis. The XPlotter ignores this value
     stream << " Z -1.000";
+    stream << " F1200"; //Override feed rate, we're just moving
     stream << endl;
 
     return gcode;

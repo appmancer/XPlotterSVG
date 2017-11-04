@@ -51,6 +51,12 @@ void SVGParser::process(QXmlStreamReader* reader, QTextStream* gcode, Material* 
     TransformationStack trans;
     //trans.pushTranslate(0, 3);
 
+    //Standard header
+    *gcode << "M0" << endl; //Disable screen
+    *gcode << "G21" << endl; //Units in mm
+    *gcode << "G28" <<  endl; //Reset to origin
+    *gcode << "G90" << endl; //all positions are absolute
+
     while (!reader->atEnd())
     {
         QXmlStreamReader::TokenType xtype = reader->readNext();
@@ -63,6 +69,7 @@ void SVGParser::process(QXmlStreamReader* reader, QTextStream* gcode, Material* 
             }
         }
     }
+    *gcode << "M1" << endl; //Enable screen
 }
 
 //Process a single element. When we find a StartElement, recursively call this function
@@ -167,6 +174,8 @@ void SVGParser::configureTool(CutSpecification* spec, QTextStream* gcode)
 
     GCodeFeed feed(spec->feedrate);
     *gcode << feed.toString();
+    Tool::setFeedrate(spec->feedrate);
+
     //Set the tool
     Tool::setTool(spec->tool);
 

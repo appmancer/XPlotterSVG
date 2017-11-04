@@ -18,6 +18,7 @@
 #include "plotterstate.h"
 #include <QTextStream>
 #include <QDebug>
+#include "tool.h"
 
 GCodeLine::GCodeLine(double x, double y) : GCodeMove(x, y)
 {
@@ -51,6 +52,8 @@ QString GCodeLine::toString(bool translate)
     stream << QString::number(viewY - translatedPoint.y, 'f', 8);
     //For Candle to show the rendering, we need to add a Z axis. The XPlotter ignores this value
     stream << " Z -1.000";
+    stream << " F";
+    stream << QString::number(Tool::getFeedrate());
     stream << endl;
 
     return gcode;

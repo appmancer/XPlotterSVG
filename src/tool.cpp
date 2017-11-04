@@ -19,6 +19,7 @@
 //Default tool
 int Tool::sTool = Tool::TOOL_PEN;
 int Tool::sPower = 100;
+int Tool::sFeed = 200;
 
 Tool::Tool()
 {
@@ -43,4 +44,14 @@ int Tool::getPower()
 void Tool::setPower(int power)
 {
     sPower = power;
+}
+
+int Tool::getFeedrate()
+{
+    return sFeed;
+}
+
+void Tool::setFeedrate(int feed)
+{
+    sFeed = feed;
 }

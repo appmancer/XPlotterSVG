@@ -44,7 +44,7 @@ QString GCodePath::toolUp()
 
         case Tool::TOOL_LASER:
         {
-            GCodeLaserOn laser;
+            GCodeLaserOff laser;
             tool = laser.toString();
         }
         break;
@@ -66,7 +66,7 @@ QString GCodePath::toolDown()
 
         case Tool::TOOL_LASER:
         {
-            GCodeLaserOff laser;
+            GCodeLaserOn laser;
             tool = laser.toString();
         }
         break;
